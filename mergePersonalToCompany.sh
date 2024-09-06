@@ -24,7 +24,11 @@ echo "___The following files have been preserved: $FILE_TO_KEEP1 and $FILE_TO_KE
 
 # *Step 6: Commit the Changes*
 git add .
+<<<<<<< HEAD
 git commit -m "Merged changes but keeping $FILE_TO_KEEP1, $FILE_TO_KEEP2 unchanged at $SOURCE_BRANCH-$CURRENT_COMMIT"
+=======
+git commit -m "Merged changes but keeping `$FILE_TO_KEEP1`,  `$FILE_TO_KEEP2` unchanged at `$SOURCE_BRANCH`"
+>>>>>>> personal-ai-street-smart
 
 # *Step 7: Push the Changes (if necessary)*
 git push origin $TARGET_BRANCH
