@@ -169,7 +169,10 @@ func (s *slackNotifier) writeMessage() (*slack.WebhookMessage, error) {
 	// Helper function to append non-empty values
 	wrapWith := func(part string, startWrapChar string, endWrapChar string) {
 		if part != "" && part != "<nil>" {
-			part = strings.ReplaceAll(part, "\n", "_")
+			part = strings.TrimSpace(part)
+			part = strings.ReplaceAll(part, "\\r\\n", "; ")
+			part = strings.ReplaceAll(part, "\\n", "; ")
+			part = strings.ReplaceAll(part, "; ;", ";")
 			messageParts = append(messageParts, fmt.Sprintf("%s%s%s", startWrapChar, part, endWrapChar))
 		}
 	}
