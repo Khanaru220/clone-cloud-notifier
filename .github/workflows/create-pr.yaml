@@ -30,7 +30,7 @@ jobs:
         uses: peter-evans/create-pull-request@v7
         with:
           branch: ${{ env.TEMP_BRANCH_LISTEN_CHANGE }}
-          commit-message: Merge ${{ env.HEAD_BRANCH }} into ${{ env.BASE_BRANCH}}
+          title: Merge ${{ env.HEAD_BRANCH }} into ${{ env.BASE_BRANCH}}
           labels: |
             auto:github-actions
           assignees: |
