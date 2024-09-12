@@ -20,10 +20,10 @@ jobs:
 
       - name: Reset promotion branch
         run: |
-          git fetch origin $HEAD_BRANCH:$HEAD_BRANCH
-          git reset --hard $HEAD_BRANCH
+          git fetch origin ${{ env.HEAD_BRANCH }}:${{ env.HEAD_BRANCH }}
+          git reset --hard ${{ env.HEAD_BRANCH }}
 
       - name: Create Pull Request
         uses: peter-evans/create-pull-request@v7
         with:
-          branch: $TEMP_BRANCH_LISTEN_CHANGE
+          branch: ${{ env.TEMP_BRANCH_LISTEN_CHANGE }}
