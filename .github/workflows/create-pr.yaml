@@ -16,7 +16,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
         with:
-          ref: '$BASE_BRANCH'
+          ref: ${{ env.BASE_BRANCH }}
 
       - name: Reset promotion branch
         run: |
