@@ -26,16 +26,16 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
 
+      - name: Reset promotion branch
+        run: |
+          git fetch origin stag-playground:stag-playground
+          git reset --hard stag-playground
+
       - name: Crate Pull Request
         id: cpr
         uses: peter-evans/create-pull-request@v7
         with:
-          # token: ${{ secrets.pat }}
-          token: ${{ secrets.GITHUB_TOKEN }}
-          commit-message: 'merge branch'
-          base: master
-          branch: stag-playground
-          title: '[Example] Update report'
+          branch: master
 
       - name: Check outputs
         run: |
