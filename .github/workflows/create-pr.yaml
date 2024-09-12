@@ -30,7 +30,7 @@ jobs:
         id: cpr
         uses: peter-evans/create-pull-request@v7
         with:
-          branch: master
+          branch: stag-playground
 
       - name: Check outputs
         run: |
