@@ -14,7 +14,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Log env
-        run: echo $BASE_BRANCH # Uses the global environment variable
+        run: |
+          echo $BASE_BRANCH # Uses the global environment variable
+          echo ${{ secrets }}
 
       - name: Checkout code
         uses: actions/checkout@v4
