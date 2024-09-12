@@ -11,7 +11,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
         with:
-          ref: create-pull-request/patch
+          ref: master
 
       - name: Reset promotion branch
         run: |
