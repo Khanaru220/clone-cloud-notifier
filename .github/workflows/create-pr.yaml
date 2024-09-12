@@ -21,7 +21,7 @@ jobs:
       - name: Log env
         run: |
           echo $BASE_BRANCH # Uses the global environment variable
-          echo ${{ secrets }}
+          echo ${{ secrets.3988469 }}
 
       - name: Checkout code
         uses: actions/checkout@v4
