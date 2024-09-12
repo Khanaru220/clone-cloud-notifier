@@ -14,11 +14,11 @@ jobs:
         with:
           ref: master
 
-      # - name: Create Pull Request
-      #   uses: peter-evans/create-pull-request@v6
-      #   with:
-      #     title: 'Merge changes from release into master'
-      #     body: 'This PR merges the latest changes from the release branch into the master branch.'
-      #     base: master
-      #     branch: stag-playground
-      #     draft: false
+      - name: Create Pull Request
+        uses: peter-evans/create-pull-request@v6
+        with:
+          title: 'Merge changes from release into master'
+          body: 'This PR merges the latest changes from the release branch into the master branch.'
+          base: master
+          branch: stag-playground
+          draft: false
