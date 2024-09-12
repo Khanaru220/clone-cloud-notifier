@@ -21,6 +21,5 @@ jobs:
         with:
           title: 'Merge changes from release into master'
           body: 'This PR merges the latest changes from the release branch into the master branch.'
-          base: stag-playground
-          branch: master
+          base: master
           draft: false
