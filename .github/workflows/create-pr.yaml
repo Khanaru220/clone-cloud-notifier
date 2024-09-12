@@ -11,9 +11,8 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
-
-      - name: Checkout github
-        runs: 'git checkout master'
+        with:
+          ref: master
 
       - name: Create Pull Request
         uses: peter-evans/create-pull-request@v6
