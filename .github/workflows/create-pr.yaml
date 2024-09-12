@@ -28,9 +28,8 @@ jobs:
 
       - name: Reset promotion branch
         run: |
-          git checkout master
-          git fetch origin stag-playground:stag-playground
-          git reset --hard stag-playground
+          git fetch origin stag-playground:temp-branch
+          git reset --hard temp-branch
 
       - name: Crate Pull Request
         id: cpr
