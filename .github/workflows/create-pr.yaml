@@ -14,7 +14,7 @@ jobs:
         with:
           fetch-depth: 0
 
-      - runs: git checkout master
+      - run: git checkout master
 
       - name: Create Pull Request
         uses: peter-evans/create-pull-request@v6
