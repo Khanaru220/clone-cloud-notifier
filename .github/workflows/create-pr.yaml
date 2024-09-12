@@ -1,5 +1,10 @@
 name: Create PR from Release to master
-# 123
+
+env:
+  BASE_BRANCH: master
+  HEAD_BRANCH: stag-playground
+  TEMP_BRANCH_LISTEN_CHANGE: create-pull-request/patch
+
 on:
   push:
     branches:
@@ -11,12 +16,14 @@ jobs:
     steps:
       - uses: actions/checkout@v4
         with:
-          ref: master
+          ref: $BASE_BRANCH
 
       - name: Reset promotion branch
         run: |
-          git fetch origin stag-playground:stag-playground
-          git reset --hard stag-playground
+          git fetch origin $HEAD_BRANCH:$HEAD_BRANCH
+          git reset --hard $HEAD_BRANCH
 
       - name: Create Pull Request
         uses: peter-evans/create-pull-request@v7
+        with:
+          branch: $TEMP_BRANCH_LISTEN_CHANGE
