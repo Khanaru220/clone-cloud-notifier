@@ -9,14 +9,16 @@ jobs:
   create-pr:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v4
+      - uses: actions/checkout@v4
         with:
-          fetch-depth: 0
+          ref: create-pull-request/patch
 
-      # - run: git checkout master
+      - name: Reset promotion branch
+        run: |
+          git fetch origin stag-playground:stag-playground
+          git reset --hard stag-playground
 
       - name: Create Pull Request
-        uses: peter-evans/create-pull-request@v6
+        uses: peter-evans/create-pull-request@v7
         with:
-          base: master
+          branch: production-promotion
