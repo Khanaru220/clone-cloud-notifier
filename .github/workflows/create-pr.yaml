@@ -1,7 +1,7 @@
 name: Create PR from 'stag-playground' to 'master' after push to Release
 
 # on 'push' event require set up token key https://github.com/peter-evans/create-pull-request/blob/main/docs/concepts-guidelines.md#triggering-further-workflow-runs
-# change - 1
+# change - 12
 
 on:
   push:
@@ -25,11 +25,6 @@ jobs:
 
       - name: Checkout code
         uses: actions/checkout@v4
-
-      - name: Reset promotion branch
-        run: |
-          git fetch origin stag-playground:temp-branch
-          git reset --hard temp-branch
 
       - name: Crate Pull Request
         id: cpr
