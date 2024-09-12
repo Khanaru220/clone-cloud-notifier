@@ -1,4 +1,4 @@
-name: Create PR from Release to master
+name: Create PR from ${{ env.HEAD_BRANCH }} to ${{ env.BASE_BRANCH}}
 
 env:
   BASE_BRANCH: master
