@@ -1,5 +1,8 @@
 name: Create PR from ${{ env.HEAD_BRANCH }} to ${{ env.BASE_BRANCH}}
 
+# Doc_1: https://github.com/peter-evans/create-pull-request/blob/main/docs/examples.md#keep-a-branch-up-to-date-with-another
+# Doc_2: https://github.com/peter-evans/create-pull-request?tab=readme-ov-file#action-behaviour
+
 env:
   BASE_BRANCH: master
   HEAD_BRANCH: stag-playground
