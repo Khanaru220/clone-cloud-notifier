@@ -1,7 +1,7 @@
 name: Create PR from 'stag-playground' to 'master' after push to Release
 
 # on 'push' event require set up token key https://github.com/peter-evans/create-pull-request/blob/main/docs/concepts-guidelines.md#triggering-further-workflow-runs
-# change - 12
+# change - 123
 
 on:
   push:
