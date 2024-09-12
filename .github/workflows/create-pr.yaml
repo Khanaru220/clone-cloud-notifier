@@ -1,8 +1,5 @@
 name: Create PR from 'stag-playground' to 'master' after push to Release
 
-permissions:
-  contents: write
-  pull-requests: write
 # on 'push' event require set up token key https://github.com/peter-evans/create-pull-request/blob/main/docs/concepts-guidelines.md#triggering-further-workflow-runs
 # change - 1
 
@@ -13,6 +10,10 @@ on:
 env:
   BASE_BRANCH: master
   HEAD_BRANCH: stag-playground
+
+permissions:
+  contents: write
+  pull-requests: write
 
 jobs:
   create-pr:
@@ -31,6 +32,7 @@ jobs:
         uses: peter-evans/create-pull-request@v7
         with:
           # token: ${{ secrets.pat }}
+          token: ${{ secrets.GITHUB_TOKEN }}
           commit-message: 'merge branch'
           base: master
           branch: stag-playground
