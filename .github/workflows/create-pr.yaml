@@ -1,5 +1,13 @@
-name: Create PR from Release to master
-# 1
+name: Create PR - Update 'master' with 'stag-playground' new push
+
+# Doc_1: https://github.com/peter-evans/create-pull-request/blob/main/docs/examples.md#keep-a-branch-up-to-date-with-another
+# Doc_2: https://github.com/peter-evans/create-pull-request?tab=readme-ov-file#action-behaviour
+
+env:
+  BASE_BRANCH: master
+  HEAD_BRANCH: stag-playground
+  TEMP_BRANCH_LISTEN_CHANGE: create-pull-request/patch
+
 on:
   push:
     branches:
@@ -9,18 +17,16 @@ jobs:
   create-pr:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v4
+      - uses: actions/checkout@v4
         with:
-          fetch-depth: 0
+          ref: ${{ env.BASE_BRANCH }}
 
-      - run: git checkout master
+      - name: Reset ${{ env.HEAD_BRANCH }} to up-to-date
+        run: |
+          git fetch origin ${{ env.HEAD_BRANCH }}:${{ env.HEAD_BRANCH }}
+          git reset --hard ${{ env.HEAD_BRANCH }}
 
       - name: Create Pull Request
-        uses: peter-evans/create-pull-request@v6
+        uses: peter-evans/create-pull-request@v7
         with:
-          title: 'Merge changes from release into master'
-          body: 'This PR merges the latest changes from the release branch into the master branch.'
-          base: stag-playground
-          branch: master
-          draft: false
+          branch: ${{ env.TEMP_BRANCH_LISTEN_CHANGE }}
