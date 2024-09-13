@@ -12,6 +12,7 @@ env:
   BASE_BRANCH: master
   HEAD_BRANCH: stag-playground
   TEMP_BRANCH_LISTEN_CHANGE: create-pull-request/patch
+  GH_TOKEN: ${{ github.token }}
 
 on:
   push:
