@@ -1,0 +1,29 @@
+name: Create PR - Update 'master' with 'stag-playground' new push
+
+# Doc_1: https://stackoverflow.com/a/73340290
+# Doc_2: https://cli.github.com/manual/gh_pr_create
+
+permissions:
+  contents: write
+  pull-requests: write
+
+env:
+  BASE_BRANCH: master
+  HEAD_BRANCH: stag-playground
+  GH_TOKEN: ${{ github.token }}
+
+on:
+  push:
+    branches:
+      - stag-playground
+
+jobs:
+  create-pr:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ env.BASE_BRANCH }}
+
+      - name: create pull request
+        run: gh pr create --base ${{ env.BASE_BRANCH }} --head ${{ env.HEAD_BRANCH }} --title 'Merge `${{ env.HEAD_BRANCH }}` into `${{ env.BASE_BRANCH }}`' --body 'Created by Github action' --label auto:github-actions --reviewer khanaru220,vanhuynh
