@@ -3,6 +3,11 @@ name: Create PR - Update 'master' with 'stag-playground' new push
 # Doc_1: https://github.com/peter-evans/create-pull-request/blob/main/docs/examples.md#keep-a-branch-up-to-date-with-another
 # Doc_2: https://github.com/peter-evans/create-pull-request?tab=readme-ov-file#action-behaviour
 # .
+
+permissions:
+  contents: write
+  pull-requests: write
+
 env:
   BASE_BRANCH: master
   HEAD_BRANCH: stag-playground
@@ -11,7 +16,7 @@ env:
 on:
   push:
     branches:
-      # - stag-playground
+      - stag-playground
 
 jobs:
   create-pr:
@@ -21,18 +26,5 @@ jobs:
         with:
           ref: ${{ env.BASE_BRANCH }}
 
-      - name: Reset ${{ env.HEAD_BRANCH }} to up-to-date
-        run: |
-          git fetch origin ${{ env.HEAD_BRANCH }}:${{ env.HEAD_BRANCH }}
-          git pull origin ${{ env.HEAD_BRANCH }}
-
-      - name: Create Pull Request
-        uses: peter-evans/create-pull-request@v7
-        with:
-          branch: ${{ env.TEMP_BRANCH_LISTEN_CHANGE }}
-          title: Merge ${{ env.HEAD_BRANCH }} into ${{ env.BASE_BRANCH}}
-          labels: |
-            auto:github-actions
-          assignees: |
-            khanaru220
-            vanhuynh
+      - name: create pull request
+        run: gh pr create --base ${{ env.BASE_BRANCH }} --head ${{ env.HEAD_BRANCH }} --title 'Merge branch_to_merge into base_branch' --body 'Created by Github action' --label auto:github-actions --reviewer khanaru220,vanhuynh
