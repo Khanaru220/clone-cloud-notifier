@@ -24,6 +24,7 @@ jobs:
       - name: Reset ${{ env.HEAD_BRANCH }} to up-to-date
         run: |
           git fetch origin ${{ env.HEAD_BRANCH }}:${{ env.HEAD_BRANCH }}
+          git reset --hard ${{ env.HEAD_BRANCH }}
 
       - name: Create Pull Request
         uses: peter-evans/create-pull-request@v7
