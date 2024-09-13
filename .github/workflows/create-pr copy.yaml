@@ -28,4 +28,4 @@ jobs:
           ref: ${{ env.BASE_BRANCH }}
 
       - name: create pull request
-        run: gh pr create --base ${{ env.BASE_BRANCH }} --head ${{ env.HEAD_BRANCH }} --title 'Merge branch_to_merge into base_branch' --body 'Created by Github action' --label auto:github-actions --reviewer khanaru220,vanhuynh
+        run: gh pr create --base ${{ env.BASE_BRANCH }} --head ${{ env.HEAD_BRANCH }} --title 'Merge `${{ env.HEAD_BRANCH }}` into `${{ env.BASE_BRANCH }}`' --body 'Created by Github action' --label auto:github-actions --reviewer khanaru220,vanhuynh
